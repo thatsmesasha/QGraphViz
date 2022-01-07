@@ -9,7 +9,7 @@ setuptools.setup(
      version='0.0.55',
      author="Saifeddine ALOUI",
      author_email="aloui.saifeddine@gmail.com",
-     description="A PyQt5 widget to manipulate (build, render, interact, load and save) Graphviz graphs",
+     description="A PyQt6 widget to manipulate (build, render, interact, load and save) Graphviz graphs",
      long_description=long_description,
      long_description_content_type="text/markdown",
      url="https://github.com/ParisNeo/QGraphViz",

@@ -6,7 +6,7 @@ Author: Saifeddine ALOUI
 Description:
 Dot perser implementation
 """
-from PyQt5.QtGui import QFontMetrics, QFont
+from PyQt6.QtGui import QFontMetrics, QFont
 class Node():
     """
     The dot graphviz engine

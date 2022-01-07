@@ -8,7 +8,7 @@ A simple graphviz graphs viewer that enables creating graphs visually,
 manipulate them and save them
 
 """
-from PyQt5.QtWidgets import QFileDialog, QDialog, QApplication, QWidget, QMainWindow, QVBoxLayout, QHBoxLayout, QFormLayout, QComboBox, QPushButton, QInputDialog, QLineEdit, QLabel
+from PyQt6.QtWidgets import QFileDialog, QDialog, QApplication, QWidget, QMainWindow, QVBoxLayout, QHBoxLayout, QFormLayout, QComboBox, QPushButton, QInputDialog, QLineEdit, QLabel
 import sys
 import os
 sys.path.insert(1,os.path.dirname(__file__)+"/..")
@@ -18,7 +18,7 @@ from QGraphViz.DotParser import Graph, GraphType
 from QGraphViz.Engines import Dot
 
 
-from PyQt5.QtGui import QFontMetrics, QFont, QImage
+from PyQt6.QtGui import QFontMetrics, QFont, QImage
 
 if __name__ == "__main__":
     # Create QT application

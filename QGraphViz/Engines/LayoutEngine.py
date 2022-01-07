@@ -6,8 +6,8 @@ Author: Saifeddine ALOUI
 Description:
 Generic layout engine implementation
 """
-from PyQt5.QtWidgets import QApplication, QWidget
-from PyQt5.QtGui import QFontMetrics, QFont, QImage
+from PyQt6.QtWidgets import QApplication, QWidget
+from PyQt6.QtGui import QFontMetrics, QFont, QImage
 
 class LayoutEngine():
     """

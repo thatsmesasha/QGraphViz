@@ -6,9 +6,9 @@ Author: Saifeddine ALOUI
 Description:
 Main Class to QGraphViz tool
 """
-from PyQt5.QtWidgets import QApplication, QWidget, QScrollArea, QSizePolicy
-from PyQt5.QtGui import QPainter, QPen, QBrush, QColor, QPainterPath, QImage, QLinearGradient
-from PyQt5.QtCore import Qt, QRect, QRectF
+from PyQt6.QtWidgets import QApplication, QWidget, QScrollArea, QSizePolicy
+from PyQt6.QtGui import QPainter, QPen, QBrush, QColor, QPainterPath, QImage, QLinearGradient
+from PyQt6.QtCore import Qt, QRect, QRectF
 import os
 import sys
 import enum
