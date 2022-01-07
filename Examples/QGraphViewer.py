@@ -162,13 +162,13 @@ if __name__ == "__main__":
         pbOK.setText("&OK")
         pbCancel.setText("&Cancel")
 
-        l.setWidget(0, QFormLayout.LabelRole, QLabel("Node Name"))
+        l.setWidget(0, QFormLayout.ItemRole.LabelRole, QLabel("Node Name"))
         l.setWidget(0, QFormLayout.FieldRole, leNodeName)
-        l.setWidget(1, QFormLayout.LabelRole, QLabel("Node Label"))
+        l.setWidget(1, QFormLayout.ItemRole.LabelRole, QLabel("Node Label"))
         l.setWidget(1, QFormLayout.FieldRole, leNodeLabel)
-        l.setWidget(2, QFormLayout.LabelRole, QLabel("Node Type"))
+        l.setWidget(2, QFormLayout.ItemRole.LabelRole, QLabel("Node Type"))
         l.setWidget(2, QFormLayout.FieldRole, cbxNodeType)
-        l.setWidget(3, QFormLayout.LabelRole, QLabel("Node Image"))
+        l.setWidget(3, QFormLayout.ItemRole.LabelRole, QLabel("Node Image"))
         l.setWidget(3, QFormLayout.FieldRole, leImagePath)
 
         def ok():
@@ -240,9 +240,9 @@ if __name__ == "__main__":
         pbOK.setText("&OK")
         pbCancel.setText("&Cancel")
 
-        l.setWidget(0, QFormLayout.LabelRole, QLabel("Subgraph Name"))
+        l.setWidget(0, QFormLayout.ItemRole.LabelRole, QLabel("Subgraph Name"))
         l.setWidget(0, QFormLayout.FieldRole, leSubgraphName)
-        l.setWidget(1, QFormLayout.LabelRole, QLabel("Subgraph Label"))
+        l.setWidget(1, QFormLayout.ItemRole.LabelRole, QLabel("Subgraph Label"))
         l.setWidget(1, QFormLayout.FieldRole, leSubgraphLabel)
   
         def ok():

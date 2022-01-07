@@ -69,7 +69,7 @@ class QGraphViz_Core(QWidget):
         
         QWidget.__init__(self,parent)
 
-        self.setSizePolicy(QSizePolicy.Fixed,QSizePolicy.Fixed)
+        # self.setSizePolicy(QSizePolicy.Fixed,QSizePolicy.Fixed)
         # Set core stuff
         self.parser = DotParser()
         self.engine=engine
@@ -106,7 +106,7 @@ class QGraphViz_Core(QWidget):
         self.hilight_Edges=hilight_Edges
 
         self.setAutoFillBackground(True)
-        self.setAttribute(Qt.WA_StyledBackground, True)
+        # self.setAttribute(Qt.WA_StyledBackground, True)
         self.setMouseTracking(True)
 
         
@@ -363,8 +363,8 @@ class QGraphViz_Core(QWidget):
     # ================== Mouse events section ===========================
 
     def mouseDoubleClickEvent(self, event):
-        x = event.x()
-        y = event.y()
+        x = event.pos().x()
+        y = event.pos().y()
         n = self.findNode(self.engine.graph, x,y)
         if n is not None:
             if(self.node_invoked_callback is not None):
@@ -379,9 +379,9 @@ class QGraphViz_Core(QWidget):
         self.leaveEvent()
 
     def mousePressEvent(self, event):
-        if event.button() == Qt.LeftButton:
-            x = event.x()
-            y = event.y()
+        if event.button() == Qt.MouseButton.LeftButton:
+            x = event.pos().x()
+            y = event.pos().y()
             self.current_pos = [x,y]
             self.mouse_down=True
             n = self.findNode(self.engine.graph, x, y)
@@ -416,8 +416,8 @@ class QGraphViz_Core(QWidget):
 
     def mouseMoveEvent(self, event):
         if self.selected_Node is not None and self.mouse_down:
-            x = event.x()
-            y = event.y()
+            x = event.pos().x()
+            y = event.pos().y()
             if(self.manipulation_mode==QGraphVizManipulationMode.Nodes_Move_Mode):
                 self.selected_Node.pos[0] += x-self.current_pos[0]
                 self.selected_Node.pos[1] += y-self.current_pos[1]
@@ -425,8 +425,8 @@ class QGraphViz_Core(QWidget):
             self.current_pos = [x,y]
             self.repaint()
         else:
-            x = event.x()
-            y = event.y()
+            x = event.pos().x()
+            y = event.pos().y()
             if(self.hilight_Nodes):
                 if(self.hovered_Node is None):
                     self.hovered_Node = self.findNode(self.engine.graph, x, y)
@@ -461,8 +461,8 @@ class QGraphViz_Core(QWidget):
         QWidget.mouseMoveEvent(self, event)
 
     def mouseReleaseEvent(self, event):
-        x = event.x()
-        y = event.y()
+        x = event.pos().x()
+        y = event.pos().y()
         n = self.findNode(self.engine.graph, x, y)   
         if n is None:
             s = self.findSubNode(self.engine.graph, x,y)     
@@ -582,12 +582,12 @@ class QGraphViz_Core(QWidget):
                 gpos[0]-subgraph.size[0]/2,
                 gpos[1]-subgraph.size[1]/2,
                 subgraph.size[0], subgraph.size[1],
-                Qt.AlignCenter|Qt.AlignTop,subgraph.kwargs["label"])
+                Qt.AlignmentFlag.AlignCenter|Qt.AlignmentFlag.AlignTop,subgraph.kwargs["label"])
 
     def paintGraph(self, graph, painter):
-        brush = QBrush(Qt.SolidPattern)
+        brush = QBrush(Qt.BrushStyle.SolidPattern)
         pen=QPen()
-        brush.setColor(Qt.white)
+        brush.setColor(QColor("white"))
 
 
         for i,edge in enumerate(graph.edges):
@@ -683,8 +683,8 @@ class QGraphViz_Core(QWidget):
 
                         path = QPainterPath()
                         path.moveTo(rect.left() + (rect.width() / 2), rect.top())
-                        path.lineTo(rect.bottomLeft())
-                        path.lineTo(rect.bottomRight())
+                        path.lineTo(rect.left(), rect.bottom())
+                        path.lineTo(rect.right(), rect.bottom())
                         path.lineTo(rect.left() + (rect.width() / 2), rect.top())
 
                         painter.fillPath(path, brush)
@@ -785,7 +785,7 @@ class QGraphViz_Core(QWidget):
                         gpos[0]-width/2,
                         gpos[1]-height/2,
                         width, height,
-                        Qt.AlignCenter|Qt.AlignTop,node.kwargs["label"])
+                        Qt.AlignmentFlag.AlignCenter|Qt.AlignmentFlag.AlignTop,node.kwargs["label"])
             else:
                 subgraph = node
                 self.paintSubgraph(subgraph, painter, pen, brush)
@@ -807,7 +807,7 @@ class QGraphViz_Core(QWidget):
             self.mouse_down and 
             self.selected_Node is not None):
             bkp = painter.pen()
-            pen=QPen(Qt.DashLine)
+            pen=QPen(Qt.PenStyle.DashLine)
             painter.setPen(pen)
             painter.drawLine(self.selected_Node.pos[0], self.selected_Node.pos[1],
                              self.current_pos[0],self.current_pos[1])
